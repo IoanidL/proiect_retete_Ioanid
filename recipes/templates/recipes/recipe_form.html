@@ -2,29 +2,30 @@
 
 {% block content %}
 <h2>{% if form.instance.pk %}Editare rețetă{% else %}Adaugă rețetă nouă{% endif %}</h2>
+<div style="width: 50%; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
 <form method="post">
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    <div>
+    <div style="width: 50%; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
       {{ form.title.label_tag }}
       {{ form.title }}
       {{ form.title.errors }}
     </div>
 
-    <div>
+    <div style="width: 50%; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
       {{ form.description.label_tag }}
       {{ form.description }}
       {{ form.description.errors }}
     </div>
 
-    <div>
+    <div style="width: 50%; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
       {{ form.prep_time.label_tag }}
       {{ form.prep_time }}
       {{ form.prep_time.errors }}
     </div>
 
-    <div>
+    <div style="width: 50%; padding: 1rem; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
       {{ form.cooking_time.label_tag }}
       {{ form.cooking_time }}
       {{ form.cooking_time.errors }}
@@ -34,4 +35,5 @@
     <button type="button">Revino</button>
     </a>
 </form>
+</div>
 {% endblock %}

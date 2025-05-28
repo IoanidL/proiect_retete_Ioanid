@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm
 from django.contrib.auth import login
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 
 def registration_view(request):
     if request.method == "POST":
@@ -14,7 +14,6 @@ def registration_view(request):
     else:
         form = RegisterForm()
     return render(request, 'accounts/register.html', {'form': form})
-
 
 
 
