@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Autentificare nereușită</h2>
+  <p>Nume de utilizator sau parolă incorectă</p>
+  <a href="{% url 'login' %}">
+    <button>OK</button>
+  </a>
+{% endblock %}

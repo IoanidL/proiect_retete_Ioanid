@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Papa Bun</title>
+    <style>
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+        }
+        nav h1 {
+            margin-right: auto;
+        }
+        .nav-button {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #333;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .nav-button:hover {
+            background-color: #f0f0f0;
+        }
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div>
+        <h1><strong>Papa Bun</strong></h1>
+    </div>
+
+    {% if user.is_authenticated %}
+        <strong>Salut, {{ user.username }}</strong>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="nav-button">Logout</button>
+        </form>
+        <a href="{% url 'my_recipes' %}" class="nav-button">Rețetele mele</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="nav-button">Autentificare</a>
+        <a href="{% url 'register' %}" class="nav-button">Înregistrare</a>
+    {% endif %}
+
+    <a href="{% url 'recipe_list' %}" class="nav-button">Acasă</a>
+    <a href="{% url 'recipe_add' %}" class="nav-button">Adaugă rețetă</a>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
