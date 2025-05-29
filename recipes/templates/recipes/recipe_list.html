@@ -14,19 +14,43 @@
 {% endfor %}
 
 
-<div class="pagination">
-  <span>
-    Pagina {{ page_obj.number }} din {{ page_obj.paginator.num_pages }}
-  </span>
+<div class="pagination" style="margin-top: 1em; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+  <span>Pagina {{ page_obj.number }} din {{ page_obj.paginator.num_pages }}</span>
 
   {% if page_obj.has_previous %}
-    <a href="?page=1{% if sort %}&sort={{ sort }}{% endif %}">Prima pagină</a>
-    <a href="?page={{ page_obj.previous_page_number }}{% if sort %}&sort={{ sort }}{% endif %}">Pagina anterioară</a>
+    <form action="" method="get" style="display:inline;">
+      <input type="hidden" name="page" value="1">
+      {% if sort %}
+        <input type="hidden" name="sort" value="{{ sort }}">
+      {% endif %}
+      <button type="submit">Prima pagină</button>
+    </form>
+
+    <form action="" method="get" style="display:inline;">
+      <input type="hidden" name="page" value="{{ page_obj.previous_page_number }}">
+      {% if sort %}
+        <input type="hidden" name="sort" value="{{ sort }}">
+      {% endif %}
+      <button type="submit">Pagina anterioară</button>
+    </form>
   {% endif %}
 
   {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}{% if sort %}&sort={{ sort }}{% endif %}">Pagina următoare</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}{% if sort %}&sort={{ sort }}{% endif %}">Ultima pagină</a>
+    <form action="" method="get" style="display:inline;">
+      <input type="hidden" name="page" value="{{ page_obj.next_page_number }}">
+      {% if sort %}
+        <input type="hidden" name="sort" value="{{ sort }}">
+      {% endif %}
+      <button type="submit">Pagina următoare</button>
+    </form>
+
+    <form action="" method="get" style="display:inline;">
+      <input type="hidden" name="page" value="{{ page_obj.paginator.num_pages }}">
+      {% if sort %}
+        <input type="hidden" name="sort" value="{{ sort }}">
+      {% endif %}
+      <button type="submit">Ultima pagină</button>
+    </form>
   {% endif %}
 </div>
 
